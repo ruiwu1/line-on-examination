@@ -1,0 +1,149 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="keywords" content="keyword1,keyword2,keyword3" />
+<meta charset="UTF-8">
+<title>登录</title>
+<link th:href="@{/css/thirdlib/bootstrap/bootstrap.min.css}" rel="stylesheet"/>
+<link th:href="@{/css/fonts/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{/css/thirdlib/bootstrap.dialog/bootstrap-dialog.min.css}" rel="stylesheet" type="text/css"/>
+<script th:src="@{/js/thirdlib/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/thirdlib/bootstrap/bootstrap.min.js}"></script>
+<script th:src="@{/js/thirdlib/bootstrap.dialog/bootstrap-dialog.min.js}"></script>
+</head>
+<style type="text/css">
+body,html{height: 100%;}
+.imglogin1{position: fixed;left: 0; top:60px; width: 100%;}
+/* 登录 */
+.backdrop{background: url(img/backdrop1.png) no-repeat;background-size: 100% 100%; height:100%;}
+.form{margin:auto; width:480px; background: rgba(255,255,255,1); border-radius: 8px; padding:15px 0; position: absolute; top: 20px; left: 0; right: 0; bottom:0; height: 420px; -webkit-box-shadow:0 0 10px rgba(204, 204, 204, .9); -moz-box-shadow:0 0 10px rgba(204, 204, 204, .9); box-shadow:0 0 10px rgba(204, 204, 204, .9);  }
+.img{padding:30px; border-bottom: 1px solid #ddd}
+.row{margin: 0 auto;}
+.form-success{padding-top:30px;}
+.form-success .form-group{padding: 0 20px; position: relative;}
+.form-success .form-group .fa{position: absolute; top: 12px; left: 40px; font-size: 17px; color: #c8c8c8; transition: all 0.5s ease 0s;}
+.form-success .form-control:focus{background: #e0e0e0;}
+.form-success .form-control:focus + i{color: #1ba8f0;}
+.form-success .form-control{background: #f0f0f0; border: none; border-radius: 20px; box-shadow: none; padding: 0 20px 0 45px; line-height: 40px; height:40px; transition: all 0.3s ease 0s; border: 1px solid #ddd;}
+.form-success .checkbox, .form-success .radio{min-height:auto; padding:0;}
+.btn-default{background: #1ba8f0; border-radius: 20px; width: 100%; line-height: 30px; font-size: 15px; color: #fff;}
+.btn-default:hover{background: #1ba8f0; color: #fff;}
+.footer{position: fixed; bottom:0; color: #FFF; line-height: 120px; width: 100%;}
+.labelInput{width: 100%;}
+.tips{font-size: 12px; line-height: 1.5em; padding:5px 45px 0;}
+.demo-label,.demo-label a{font-size: 14px; line-height: 36px;}
+.demo-label a{color:#13a4ed;}
+
+</style>
+<body>
+<div class="panel-body backdrop">
+    <header class="text-center imglogin1">
+        <div class="">
+            <img th:src="@{/img/loginPic.png}">
+        </div>
+    </header>
+    <div class="form panel">
+        <div class="form-group">
+            <div class="row">
+                <div class="panel-body text-center img">
+                    <img  th:src="@{/img/login.png}">
+                </div>
+                <form action="" id="loginForm" class="form-success">
+                    <div class="form-group">
+                        <label for="username" class="labelInput">
+                            <input type="text" name="username" class="form-control" id="username" placeholder="请输入用户名">
+                            <i class="fa fa-user"></i>
+                        </label>
+                        <div class="tips"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="labelInput">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码">
+                            <i class="fa fa-lock"></i>
+                        </label>
+                        <div class="tips"></div>
+                    </div>
+                    <div class="form-group" style="display:none">
+                    	<div id="yanzheng"></div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" onclick="login()" id="submit_btn" class="btn btn-default">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer text-center">
+        <p>版权所有：</p>
+    </footer>
+</div>
+<script th:inline="javascript">
+    var ctx = [[${#httpServletRequest.getContextPath()}]];
+    //tips弹窗
+    function dialogShow(resultdesc) {
+        var dlg = BootstrapDialog.show({
+            message: resultdesc
+        });
+        setTimeout(function(){
+            dlg.close();
+        },3000);
+    }
+
+    function login() {
+        if (isEmpty($("#username").val())){
+            dialogShow("用户名不能为空");
+            return
+        }
+        if (isEmpty($("#password").val())){
+            dialogShow("密码不能为空");
+            return
+        }
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: ctx+"/authentication/form" ,//url
+            data: $('#loginForm').serialize(),
+            contentType : "application/x-www-form-urlencoded",
+            async : true,
+            success: function (result) {
+                if (result.rspCode === '103' || result.rspCode === '000100'|| result.rspCode === '999999') {
+                    dialogShow(result.rspMsg);
+                } else {
+                    window.location.href=ctx+"/menu/main";
+                }
+
+            },
+            error : function(XMLHttpRequest, textStatu,
+                             errorThrown) {
+                debugger;
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus); // paser error;
+            }
+        });
+    }
+
+    document.onkeydown = function(e) {
+        if (!e)
+            e = window.event;//火狐中是 window.event
+        if ((e.keyCode || e.which) == 13) {
+            document.getElementById("submit_btn").click();
+        }
+    };
+
+    function isEmpty(obj) {
+        // 本身为空直接返回true
+        if (obj == null) return true;
+        // 然后可以根据长度判断，在低版本的ie浏览器中无法这样判断。
+        if (obj.length > 0) return false;
+        if (obj.length === 0) return true;
+        //最后通过属性长度判断。
+        for (var key in obj) {
+            if (hasOwnProperty.call(obj, key)) return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

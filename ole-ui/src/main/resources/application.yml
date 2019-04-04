@@ -1,0 +1,20 @@
+server:
+  port: 8012
+spring:
+  application:
+    name: iu_ui
+  thymeleaf:
+    mode: HTML5
+    cache: false
+    prefix: classpath:/templates/
+    servlet:
+      content-type: text/html
+    suffix: .html
+    encoding: UTF-8
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true #注册到eureka上显示ip
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}

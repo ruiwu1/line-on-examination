@@ -1,0 +1,390 @@
+.modal-dialog{
+	  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+i.fa.fa-circle-o {
+	margin-right: 10px;
+}
+
+.margin0 {
+	margin: 0 !important;
+}
+
+.marginU0 {
+	margin-top: 0px !important;
+}
+
+.marginU5 {
+	margin-top: 5px !important;
+}
+
+.marginU10 {
+	margin-top: 10px !important;
+}
+
+.marginU15 {
+	margin-top: 15px !important;
+}
+
+.marginU20 {
+	margin-top: 20px !important;
+}
+
+.marginU25 {
+	margin-top: 25px !important;
+}
+
+.marginU30 {
+	margin-top: 30px !important;
+}
+
+.marginU50 {
+	margin-top: 50px !important;
+}
+
+.marginD0 {
+	margin-bottom: 0px !important;
+}
+
+.marginD10 {
+	margin-bottom: 10px !important;
+}
+
+.marginD15 {
+	margin-bottom: 15px !important;
+}
+
+.marginD20 {
+	margin-bottom: 20px !important;
+}
+
+.marginL0 {
+	margin-left: 0px !important;
+}
+
+.marginL5 {
+	margin-left: 5px !important;
+}
+
+.marginL10 {
+	margin-left: 10px !important;
+}
+
+.marginL15 {
+	margin-left: 15px !important;
+}
+
+.marginL20 {
+	margin-left: 20px !important;
+}
+
+.marginL25 {
+	margin-left: 25px !important;
+}
+
+.marginL30 {
+	margin-left: 30px !important;
+}
+
+.marginL35 {
+	margin-left: 35px !important;
+}
+
+.marginL40 {
+	margin-left: 40px !important;
+}
+
+.marginL45 {
+	margin-left: 45px !important;
+}
+
+.marginL50 {
+	margin-left: 50px !important;
+}
+
+.marginR0 {
+	margin-right: 0px !important;
+}
+
+.marginR5 {
+	margin-right: 5px !important;
+}
+
+.marginR10 {
+	margin-right: 10px !important;
+}
+
+.marginR15 {
+	margin-right: 15px !important;
+}
+
+.marginR20 {
+	margin-right: 20px !important;
+}
+
+.marginR25 {
+	margin-right: 25px !important;
+}
+
+.marginR30 {
+	margin-right: 30px !important;
+}
+
+.marginR35 {
+	margin-right: 35px !important;
+}
+
+.padding0 {
+	padding: 0 !important;
+}
+
+.paddingU5 {
+	padding-top: 5px !important;
+}
+
+.paddingU10 {
+	padding-top: 10px !important;
+}
+
+.paddingD5 {
+	padding-bottom: 5px !important;
+}
+
+.paddingD10 {
+	padding-bottom: 10px !important;
+}
+
+.paddingL0 {
+	padding-left: 0px !important;
+}
+
+.paddingL5 {
+	padding-left: 5px !important;
+}
+
+.paddingL10 {
+	padding-left: 10px !important;
+}
+
+.paddingL15 {
+	padding-left: 15px !important;
+}
+
+.paddingL20 {
+	padding-left: 20px !important;
+}
+
+.paddingR0 {
+	padding-right: 0px !important;
+}
+
+.paddingR15 {
+	padding-right: 15px !important;
+}
+
+.paddingR5 {
+	padding-right: 5px !important;
+}
+
+.paddingR10 {
+	padding-right: 10px !important;
+}
+
+.paddingR20 {
+	padding-right: 20px !important;
+}
+
+.padT10R10B10L10 {
+	padding: 10px !important;
+}
+
+.paddingLR15 {
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+
+.marginLR15 {
+	margin-left: 15px !important;
+	margin-right: 15px !important;
+}
+
+.row {
+	height: 100%;
+}
+
+.leftFloat {
+	float: left;
+}
+
+.rightFloat {
+	float: right;
+}
+
+label {
+	font-weight: normal;
+	margin: 0;
+	line-height: 34px;
+}
+
+textarea {
+	resize: none;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'Microsoft Yahei';
+}
+
+.TopNewImgInfo {
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+.width100 {
+	width: 100%;
+}
+
+.height100 {
+	height: 100%;
+}
+
+.modal-footer .btn, .FooterMain .btn {
+	min-width: 102px;
+}
+
+.btnW100 {
+	width: 100%;
+}
+
+.btn-button {
+	border: 1px solid #dfdfdf;
+	padding: 0 5px;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	height: 34px;
+	margin-bottom: 0;
+	margin-top: -2px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border-radius: 0;
+	min-width: 80px;
+}
+
+.errorspan {
+	height: 34px;
+	border-radius: 0;
+	border: 1px solid #ccc;
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	background-color: #fff;
+	cursor: pointer;
+}
+
+#historyTable tbody tr td {
+	position: relative;
+}
+
+#historyTable input[type="checkbox"].onoff {
+	background: url(../img/OnOff.png) no-repeat 0px -30px;
+	width: 90px;
+	height: 25px;
+	position: absolute;
+	left: 8px;
+	border: 0;
+	top: 10px;
+	z-index: 1;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+}
+
+#historyTable input[type="checkbox"].onoff:focus {
+	outline: none;
+}
+
+#historyTable input[type="checkbox"].onoff:checked {
+	background-position: 0px 0px;
+}
+
+#ConsultationTable tbody tr td {
+	position: relative;
+}
+
+#ConsultationTable input[type="checkbox"].onoff {
+	background: url(../img/OnOff.png) no-repeat 0px -30px;
+	width: 90px;
+	height: 25px;
+	position: absolute;
+	left: 15px;
+	border: 0;
+	top: 5px;
+	z-index: 1;
+	top: 5px;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+}
+
+#ConsultationTable input[type="checkbox"].onoff:focus {
+	outline: none;
+}
+
+#ConsultationTable input[type="checkbox"].onoff:checked {
+	background-position: 0px 0px;
+}
+
+#locationTable tbody tr td {
+	position: relative;
+}
+
+#locationTable input[type="checkbox"].onoff {
+	background: url(../img/OnOff.png) no-repeat 0px -30px;
+	width: 90px;
+	height: 25px;
+	position: absolute;
+	left: 15px;
+	border: 0;
+	top: calc(50% - 12.5px);
+	z-index: 1;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+}
+
+#locationTable input[type="checkbox"].onoff:focus {
+	outline: none;
+}
+
+#locationTable input[type="checkbox"].onoff:checked {
+	background-position: 0px 0px;
+}
+
+.fixed-table-container {
+    position: relative;
+    clear: both;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    background-color:#ffffff !important;
+}

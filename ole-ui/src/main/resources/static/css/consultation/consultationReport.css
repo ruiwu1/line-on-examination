@@ -1,0 +1,1493 @@
+	@charset"utf-8";
+	body,html{height:100%; width:100%; background:#f5f5f5}
+body,ul,p{margin:0 !important;padding:0;}
+li{list-style:none} 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend, keygen, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+	time, mark, audio, video, input, textarea, select, button {margin:0; padding:0; border:none; border:0; outline:0; font-size:87.5%; font:inherit; vertical-align:baseline; line-height:1.75em; font-size: 15px;}
+ins, u, s, a, a:hover,a:focus{text-decoration:none !important;}
+.fl{float:left;}
+.fr{float:right}
+.wrapper{height:100%; overflow-x:hidden; background:#f5f5f5; padding:15px;}
+.clearfix{clear:both; z-index:1}
+
+/* 浣跨敤闃块噷宸村反鍥炬爣搴撳瓧浣撳浘鏍� */
+@font-face {font-family: 'iconfont';
+    src: url('../fonts/iconfont.eot');
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/iconfont.woff') format('woff'),
+    url('../fonts/iconfont.ttf') format('truetype'),
+    url('../fonts/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+/*淇敼榛樿婊氬姩鏉�*/
+	::-webkit-scrollbar{
+		width:6px; 
+		height:15px;
+	}  
+	/*瀹氫箟婊氬姩鏉¤建閬� 鍐呴槾褰�+鍦嗚*/  
+	::-webkit-scrollbar-track  {
+		-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3); 
+		border-radius:10px; 
+		background-color:#ddd;
+	}  
+	/*瀹氫箟婊戝潡 鍐呴槾褰�+鍦嗚*/  
+	::-webkit-scrollbar-thumb  {
+		border-radius:10px; 
+		-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);  
+		background-color:#999;
+	}  
+/* 鍗曢�夋牱寮忕編鍖� */
+	.radio{
+		display: inline-block !important;
+		position: relative;
+		margin-right: 10px;
+		cursor: pointer;
+		width: 75px;
+		margin: 0 !important;
+	}
+	.radio input{
+		display: none;
+	}
+	.radio .radio-bg{
+		display: inline-block !important;
+		height: 18px;
+		width: 18px;
+		margin-right: 5px;
+		margin: 7px 0;
+		border: 1px solid #282b8e;
+		background-color: #fff;
+		border-radius: 100%;
+		vertical-align: top;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+	.radio .radio-on{
+		display: none;
+	}
+	.radio input:checked + span.radio-on{
+		width: 10px;
+		height: 10px;
+		position: absolute;
+		border-radius: 100%;
+		top: 11px;
+		left: 4px;
+		background-image: linear-gradient(#282b8e 0, #282b8e 100%);
+		transform: scale(0, 0);
+		transition: all 0.2s ease;
+		transform: scale(1, 1);
+		display: inline-block;
+	}
+	/* 鍗曢�変緥瀛� */
+	/* <label for="man" class="radio">
+		<span class="radio-bg"></span>
+		<input type="radio" name="sex" id="man" value="1" checked="checked"> 鐢�
+		<span class="radio-on"></span>
+	</label> */
+/* 澶嶉�夋鏍峰紡缇庡寲 */
+	#checkbox label {
+		cursor:pointer;
+		font-weight: 100;
+		display: inline-block;
+		width:100%;
+	}
+	#checkbox label i {
+		font-size:14px;
+		font-style:normal;
+		display:inline-block;
+		width:15px;
+		height:15px;
+		text-align:center;
+		line-height:12px;
+		color:#fff;
+		vertical-align:middle;
+		margin:-2px 5px 1px 0;
+		border:#1c1f87 1px solid;
+		border-radius: 5px;
+	}
+	#checkbox input[type="checkbox"],input[type="radio"] {
+		display:none;
+	}
+	#checkbox input[type="radio"] + i {
+		border-radius:7px;
+	}
+	#checkbox input[type="checkbox"]:checked + i,input[type="radio"]:checked + i {
+		background: #1c1f87;
+	}
+	#checkbox input[type="checkbox"]:disabled + i,input[type="radio"]:disabled + i {
+		border-color: #ccc;
+	}
+	#checkbox input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled + i {
+		background :#ccc;
+	}
+	/*澶嶉�変緥瀛�
+	<label><input type="checkbox"><i>鉁�</i>澶嶉�夋</label><br>
+	<label><input type="checkbox" checked><i>鉁�</i>澶嶉�夋</label><br>
+	<label><input type="checkbox" disabled><i>鉁�</i>澶嶉�夋绂佺敤</label><br>
+	<label><input type="checkbox" disabled checked><i>鉁�</i>澶嶉�夋绂佺敤宸查��</label><br>
+	<label><input type="radio" name="abc"><i>鉁�</i>鍗曢�夋</label><br>
+	<label><input type="radio" name="abc" checked><i>鉁�</i>鍗曢�夋</label><br>
+	<label><input type="radio" name="abc" disabled><i>鉁�</i>鍗曢�夋绂佺敤</label><br>
+	<label><input type="radio" name="def" disabled checked><i>鉁�</i>鍗曢�夋绂佺敤宸查��</label><br>
+	 */
+/* 鎸夐挳 */	
+	.btn-primary, .btn-primary:hover, .btn-primary:focus{
+		background-color: #1c1f87!important; 
+		border:1 solid rgba(28,31,125,0.13)!important;
+	}
+	.btn-default, .btn-default:hover, .btn-default:focus{
+		background-color: #fff !important; 
+		border-color:#1c1f87 !important;
+		color: #1c1f87 !important;
+		margin-left:10px;
+	}
+	.form-group{
+		position: relative;
+	}
+	.form-group label{
+		font-weight: 100;
+		line-height: 32px;
+		margin:0;
+		padding:0;
+		top:0;
+	}
+	.panel-body .form-inline .form-group{
+		margin-right:10px;
+	}
+	.panel-body .form-inline .form-group i{
+		position:absolute;
+		line-height:32px;
+		background:#eaeaea;
+		right:0;
+		top:0;
+		text-align:center;
+		width:30px;
+		border:1px solid #ccc;
+	}
+	.panel-body {
+		min-height:100%;
+		background: #fff;
+	}
+	/* 琛ㄦ牸 */
+	.panel-body .table>thead>tr>th{
+		line-height: 24px;
+	    background: #192c8f;
+	    border-left: 0;
+	    color: #fff;
+	    text-align: center;
+	    font-size: 15px;
+	    border-left:0
+	}
+	.panel-body .table>tbody>tr>td{
+		line-height: 34px;
+	    text-align: center;
+	    border-left: 0;
+	}
+	/* 寮圭獥 */
+	.modal{
+		background:rgba(0,0,0,.3)
+	}
+	.modal .modal-header h4{
+		font-size:17px;
+	}
+	.form-horizontal .radio{
+		padding-top:0!important
+	}
+	/* 璀﹀憡鎻愮ず妗� */
+	.alertHint .alert{
+		width:200px;
+		margin: 0% auto;
+		position:absolute;
+		top: 30%;
+		margin-left:-100px;
+		left:50%;
+		
+	}
+	.alertHint .alert-dismissable, .alert-dismissible{
+		padding:30px 15px;
+	}
+	.alertHint .alert-primary{
+		background-color: #d2d2e7;
+		border-color: #1c1f877d;
+		color: #1c1f87;
+	}
+	.alertHint .alertSpan span{
+		display:inline-block;
+		font-size:40px;
+		line-height:40px;
+	}
+/* 椤甸潰璇︽儏 */	
+	/* 鎷嗗垎 */
+	.ssaBreak .form-inline:first-child .form-group{
+		margin:0;
+	}
+	.ssaBreak .form-inline .form-group{
+		margin-right:8px;
+	}
+	.ssaBreak .form-inline .form-group span{
+		display: inline-block;
+		font-size: 15px;
+		margin-right:5px;
+	}
+	/* 鐧诲綍椤� */
+	/* .login {
+		background:url(../img/login_bg.jpg) no-repeat center;
+		background-size:100% 100%;
+	}
+	.loginline {
+		position:absolute;
+		top:50%;
+		-webkit-transform:translateY(-50%);
+		-moz-transform:translateY(-50%);
+		-ms-transform:translateY(-50%);
+		-o-transform:translateY(-50%);
+		transform:translateY(-50%);
+		line-height:0;
+		padding:0;
+	}
+	.loginline .fl img {
+		width:100%;
+	}
+	.loginline .zhuce {
+		background:rgba(255,255,255,.4);
+		color:#fff;
+		border-radius:8px;
+		padding:50px;
+		margin:20px 40px;
+	}
+	.loginline .zhuce h4 {
+		font-size:24px;
+		letter-spacing:2px;
+	}
+	.loginline .zhuce .form-group {
+		position:relative;
+		border-bottom:1px solid #fff;
+		margin:30px 0;
+	}
+	.loginline .zhuce .form-group label {
+		width:100%
+	}
+	.loginline .zhuce .form-group label i {
+		position:absolute;
+		left:15px;
+		top:5px;
+		border-right:1px solid #fff;
+		padding-right:15px;
+		line-height:24px;
+		font-size:16px;
+		color:#fff;
+	}
+	.loginline .zhuce .form-group label input {
+		background:transparent;
+		line-height:34px;
+		border:none;
+		width:100%;
+		padding-left:60px;
+		font-weight:100;
+		color:#fff;
+	}
+	.loginline .zhuce .form-group label input::-webkit-input-placeholder {
+		color:#cecece;
+	}
+	.loginline .zhuce .form-group label input:-moz-placeholder {
+		color:#cecece;
+	}
+	.loginline .zhuce .form-group label input::-moz-placeholder {
+		color:#cecece;
+	}
+	.loginline .zhuce .form-group label input:-ms-input-placeholder {
+		color:#cecece;
+	} */
+	/* .bornone {
+		border-bottom:none !important;
+	}
+	.bornone button,.bornone button:hover,.bornone button:focus {
+		width:100%;
+		background:#192c8f;
+		border-color:#192c8f
+	}
+	.loginline .zhuce .form-group a {
+		color:#fff;
+	}
+	.enroll label {
+		font-weight:100;
+		line-height:34px;
+		text-align:right
+	}
+	.enroll .col-xs-8 .col-xs-8 {
+		padding:0;
+	}
+	.enroll .col-xs-8 .col-xs-4 {
+		padding-right:0;
+	} */
+	/*濠电偞鎸婚惃婊堝幢濞嗘垵楠勯梺璇茬凹缁茬粯绔熼崼銉ユ槬闁告稒娼欓崘锟介梺璺ㄥ櫐閹凤拷*/
+	/*logo*/
+	/* #logo {
+		height:80px;
+		border:1px solid transparent;
+		border-bottom:1px solid rgba(255,255,255,.5);
+	}
+	#logo h4 {
+		text-align:center;
+		line-height:60px;
+		font-size:20px;
+		color:#fff;
+		font-weight:700;
+	} */
+	/* 鑿滃崟鏍� */
+	.navMenubox {
+		width:220px;
+		background:#2d313c;
+		position:absolute;
+		top:0;
+		left:0;
+		bottom:0;
+		right:0;
+	}
+	.navMenu> li {
+		display:block;
+		margin:0;
+		padding:0;
+		border:0px;
+		margin:5px 0;
+	}
+	.navMenu>li>a {
+		display:block;
+		line-height:34px;
+		color:#fff;
+		transition:all .3s;
+		position:relative;
+		text-decoration:none;
+		font-size:16px;
+		padding:0px 15px;
+		margin:10px 0;
+	}
+	.navMenu > li> a {
+		border-left:2px solid transparent;
+	}
+	.navMenu > li:last-child > a {
+		border-bottom:1px solid transparent;
+	}
+	.navMenu>li>a>i {
+		font-size:18px;
+		font-style:normal;
+		margin:0 5px;
+	}
+	.navMenu li a .arrow:before {
+		display:block;
+		float:right;
+		margin-top:1px;
+		margin-right:15px;
+		display:inline;
+		font-size:16px;
+		font-family:FontAwesome;
+		height:auto;
+		content:"\f105";
+		font-weight:300;
+		text-shadow:none;
+	}
+	.navMenu li a .arrow.open:before {
+		float:right;
+		margin-top:1px;
+		margin-right:15px;
+		display:inline;
+		font-family:FontAwesome;
+		height:auto;
+		font-size:16px;
+		content:"\f107";
+		font-weight:300;
+		text-shadow:none;
+	}
+	.open>a.afinve,.navMenu>li>a.active,.navMenu>li>a:hover {
+		color:#38c0fd;
+		border-left:2px solid #38c0fd;
+	}
+	.navMenu>li>ul.sub-menu,.navMenu>li>ul.sub-menu>li>ul.sub-menu {
+		display:none;
+		list-style:none;
+		clear:both;
+		margin:8px 0px 0px 10px;
+		padding-bottom:5px;
+	}
+	.navMenu>li.active > ul.sub-menu,.navMenu>li>ul.sub-menu>li.active >ul.sub-menu {
+		}.navMenu>li>ul.sub-menu li {
+		background:none;
+		margin:0px;
+		padding:0px;
+	}
+	.navMenu>li>ul.sub-menu li>a {
+		display:block;
+		font-size:15px;
+		line-height:34px;
+		padding-left:35px;
+		color:rgba(255,255,255,.6);
+		clear:both;
+		margin:5px 0;
+	}
+	.navMenu>li>ul.sub-menu li>a.active,.navMenu>li>ul.sub-menu li>a:hover,.navMenu>li>ul.sub-menu>li.active >a {
+		color:#61b7f1;
+	}
+	.open .sub-menu {
+		display:block !important;
+	}
+	.navMenu>li a{
+		position:relative;
+	}
+	.navMenu>li a span.fa{
+		position:absolute;
+		right:15px;
+		line-height:34px;
+	}
+	.navMenu>li.open a.active span.fa{
+		transform:rotate(90deg);
+		-ms-transform:rotate(90deg); 	/* IE 9 */
+		-moz-transform:rotate(90deg); 	/* Firefox */
+		-webkit-transform:rotate(90deg); /* Safari 鍜� Chrome */
+		-o-transform:rotate(90deg); 	/* Opera */
+	}
+	/**/
+	.reset {
+		background:url(../img/reset.png) no-repeat center;
+	}
+	/* 澶撮儴 */
+	.logo{
+		background:#2d313c;
+		width:220px;
+		height:67px;
+	}
+	.logo img{
+		margin:10px 0 0 10px;
+	}
+	.RightMenu .dropdown-menu::before {
+		content:'';
+		display:inline-block;
+		border-left:7px solid transparent;
+		border-right:7px solid transparent;
+		border-bottom:7px solid #CCC;
+		position:absolute;
+		top:-8px;
+		right:33px;
+	}
+	.RightMenu .dropdown-menu::after {
+		content:'';
+		display:inline-block;
+		border-left:7px solid transparent;
+		border-right:7px solid transparent;
+		border-bottom:7px solid #01acf2;
+		position:absolute;
+		top:-7px;
+		right:33px;
+	}
+	.RightMenu ul li {
+		padding:0 15px;
+		cursor:pointer;
+		height:66px;
+	}
+	.RightMenu ul li a {
+		display:inline-block;
+		width:100%;
+		height:100%;
+	}
+	.voice .fa {
+		line-height:66px;
+		font-size:22px;
+		color:#1c1f87;
+		cursor:pointer;
+		padding:0 15px;
+	}
+	.voice .fa em {
+		font-style:normal;
+		font-size:18px;
+		position:relative;
+		top:-4px;
+		left:2px;
+		padding-right:4px;
+	}
+	.RightMenu ul {
+		margin:0;
+		padding:0
+	}
+	.RightMenu ul li .sign a,.RightMenu ul li .sign a:focus,.RightMenu ul li .sign a:hover {
+		color:#333;
+		font-size:16px;
+		line-height:66px;
+	}
+	.RightMenu ul li {
+		list-style:none;
+	}
+	/*锟斤拷示锟斤拷式锟睫革拷*/
+	.RightMenu .tooltip-inner {
+		text-align:center;
+		font-size:14px;
+	}
+	.RightMenu {
+		margin-right:15px;
+	}
+	.RightMenu ul li .bell {
+		width:22px;
+		height:22px;
+		text-align:center;
+		border-radius:50%;
+		line-height:22px;
+		font-size:12px;
+		background:#f34040;
+		color:#fff;
+		position:relative;
+		top:15px;
+		right:26px;
+	}
+	.RightMenu ul li .bank img {
+		width:40px;
+		height:40px;
+		border:1px solid #ddd;
+		border-radius:50%;
+		margin:13px 0;
+	}
+	.RightMenu ul li p {
+		font-size:15px;
+		line-height:66px;
+		padding-left:10px;
+		margin:0
+	}
+	.RightMenu ul li .sign {
+		line-height:66px;
+		font-size:16px;
+	}
+	.RightMenu ul li .sign span {
+		display:inline-block;
+		font-size:24px;
+		padding-right:8px;
+		color:#1c1f87;
+		position:relative;
+		top:4px;
+	}
+	.sign a {
+		color:#333;
+	}
+
+	/*闂備浇鐨崱鈺佹缂傚倸绉寸粔鐢电矚闁秴鐒洪柛鎰屽懐顦�*/
+	.bank {
+		background:#fff
+	}
+	.bank ul li {
+		margin:30px 0;
+		line-height:20px;
+		font-size:15px;
+		padding:0 20px;
+	}
+	.bank ul li:first-child {
+		border-right:1px solid #192c8f;
+	}
+	.bank ul li a {
+		font-size:15px;
+		color:#192c8f;
+	}
+	/*闂佽崵濮村ù鍕繆閸モ晛鍨濋煫鍥ㄧ☉缁�鍐煕濞戝崬寮鹃柛鐕傛嫹*/
+	.annotation {
+		background:#f5f5f5
+	}
+	.retion {
+		position:relative;
+		margin-left:220px;
+	}
+	.berad ul {
+		background:#fff
+	}
+	.berad ul a {
+		color:#192c8f
+	}
+	.exist {
+		background:#fff;
+		border-radius:5px;
+		margin:15px 0;
+		padding:0 15px;
+		position:relative
+	}
+	.exist .btn-default,.exist .btn-default:hover,.exist .btn-default:before {
+		padding:6px 12px !important;
+		margin-right:5px;
+		color:#1c1f87;
+		border-color:#1c1f87;
+		background:transparent;
+		line-height:1.25em;
+	}
+	.choice {
+		position:absolute;
+		top:10px;
+		right:15px;
+	}
+	#shadow li {
+		padding:5px 10px;
+		background:#192c8f;
+		margin-top:10px
+	}
+	#shadow li a {
+		line-height:1.75em;
+		color:#494949;
+		font-size:15px;
+		padding:5px 25px;
+		color:#fff;
+	}
+	#shadow li.active {
+		border:1px solid #192c8f;
+		border-bottom:none;
+		background:transparent;
+		padding:4.5px 10px;
+	}
+	#shadow li.active a {
+		color:#192c8f;
+		font-weight:700;
+	}
+	.tablemark {
+		margin-top:10px;
+	}
+	.tablemark .table>thead>tr>th {
+		line-height:24px;
+		background:#192c8f;
+		color:#fff;
+		text-align:center;
+		font-size:15px;
+	}
+	.tablemark .table>tbody>tr>td {
+		line-height:34px;
+		text-align:center;
+	}
+	.btn-primary,.btn-primary:hover,.btn-primary:focus {
+		background:#192c8f;
+		border-color:#192c8f;
+	}
+	.nomarkform {
+		background:#fff;
+		padding:10px 15px;
+		border-radius:5px;
+	}
+	.nomarkform label {
+		font-weight:100;
+		line-height:34px;
+	}
+	.nomarkform .form-group {
+		margin-right:8px;
+		position:relative;
+	}
+	.nomarkform .form-group i {
+		position:absolute;
+		right:6px;
+		top:10px;
+		font-size:15px;
+		color:#192c8f;
+		font-style:normal
+	}
+	/*闁荤喐绮嶅妯虹暦椤掑嫬纾块柨鐕傛嫹*/
+	#imgmark {
+		overflow-y:auto
+	}
+	.demand {
+		height:60px;
+		border-bottom:1px solid #ff8a00;
+	}
+	.order {
+		position:absolute;
+		top:60px;
+		left:0;
+		bottom:0;
+		right:0;
+	}
+	.order .col-xs-3,.order .col-xs-9 {
+		height:100%;
+		overflow-y:auto;
+	}
+	.order .col-xs-3 {
+		border-right:1px solid #ff8a00;
+		padding:0;
+	}
+	.order .panel-default>.panel-heading {
+		background:transparent;
+		color:#fff;
+		border:1px solid rgba(255,255,255,.5);
+		border-radius:5px;
+		padding:0;
+	}
+	.order .panel-group .panel-heading+.panel-collapse>.panel-body {
+		border:none;
+	}
+	#label li {
+		background:#ff8a00;
+		text-align:center;
+	}
+	#label li.active {
+		background:transparent;
+		color:#ff8a00
+	}
+	#label li.active a {
+		color:#ff8a00;
+		font-weight:700
+	}
+	#label li a {
+		color:#ff8a00;
+		height:34px;
+		line-height:34px;
+		color:#000;
+		font-size:15px;
+		width:100%;
+		height:100%;
+		display:inline-block;
+	}
+	.labelmark .panel-default {
+		border:none;
+		padding:15px;
+	}
+	.labelmark .panel-title>a {
+		width:100%;
+		height:100%;
+		display:inline-block;
+		padding:10px 15px;
+		position:relative;
+	}
+	.labelmark .panel-title>a>span {
+		position:absolute;
+		right:15px;
+	}
+	.labelmark .panel-title>a.collapsed>span {
+		transform:rotate(-90deg);
+		-ms-transform:rotate(-90deg);
+		/* IE 9 */
+	-moz-transform:rotate(-90deg);
+		/* Firefox */
+	-webkit-transform:rotate(-90deg);
+		/* Safari 闂備礁鎲＄划锝夊箯閿燂拷 Chrome */
+	-o-transform:rotate(-90deg);
+		/* Opera */
+	}
+	/*闁荤偞绋忛崝宥夋偋閹间礁钃熼柟閭︿簽椤忛亶鎮跺☉妯垮闁活偄绉剁划鍫澝洪鍜佸悈闂佽姤锕幏锟�*/
+		.exist table thead tr th,.exist table tbody tr td,.exist table tbody tr td .fa {
+		text-align:center;
+		border:none;
+		line-height:34px;
+	}
+	.exist table thead tr th {
+		background:#1c1f87;
+		color:#fff;
+		font-size:16px;
+	}
+	.exist table tbody tr {
+		cursor:pointer;
+	}
+	.exist table tbody tr td {
+		font-size:14px;
+	}
+	.exist .table-expandable>tbody>tr:nth-child(4n-1) {
+		background-color:#f5f5f5;
+	}
+	.exist .table-hover>tbody>tr:hover {
+		background-color:#eae9e9;
+	}
+	.exist .fold ul li {
+		background:#fff;
+		border-radius:5px;
+		margin:0 1%;
+	}
+	.exist .fold ul li.col-xs-3 {
+		width:23%;
+	}
+	.exist .fold ul li h4 {
+		font-size:16px;
+		color:#1c1f87;
+		line-height:2em;
+		border-bottom:1px solid #ccc;
+		letter-spacing:1px;
+		margin:10px 0 0;
+	}
+	.exist .fold ul li h4 i {
+		display:inline-block;
+		padding-right:5px;
+	}
+	.exist .fold ul li p {
+		line-height:1.75em;
+		color:#595959;
+		padding:5px 0;
+		height:130px;
+		overflow-y:auto;
+		font-size:14px;
+	}
+	.exist .ss,.exist .danger {
+		background:#eae9e9!important;
+		color:#1c1f87;
+		font-weight:700;
+		font-size:14px;
+	}
+	.slow {
+		display:table-row !important
+	}
+	.exist .detail-view {
+		background-color:#eae9e9 !important;
+	}
+	.exist .detail-icon {
+		display:none;
+	}
+	/* 婵＄偑鍊楅弫鎼佹偉閿燂拷 */
+		.pagination>li>a,.pagination>li>span {
+		color:#494949 !important
+	}
+	.page .pagination>li>a {
+		margin:0 1px;
+		border-radius:5px;
+	}
+	.pagination>.active>a,.pagination>.active>a:hover,.pagination>.active>a:focus,.pagination>.active>span,.pagination>.active>span:hover,.pagination>.active>span:focus {
+		background:#1c1f87 !important;
+		color:#fff !important;
+	}
+	/* 婵炴垶妫戠粻鎴﹀疮閹捐绠柕澶堝劜閸燂拷 */	
+		/* 濠碘槅鍨崜婵嗩熆閿燂拷 */
+	.report {
+		margin:15px;
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		background:#fff;
+	}
+	.report .col-sm-3,.report .col-sm-9 {
+		height:100%;
+		overflow-y:auto;
+	}
+	.report .col-sm-9 {
+		border-left:1px solid #b4b5bb;
+	}
+	/* .stencil {
+		height:100%;
+	}
+	*/
+	.reporth3 h3 {
+		margin:0;
+		font-size:18px;
+		font-weight:bold;
+		letter-spacing:5px;
+		padding:32px 0;
+	}
+	.write label {
+		font-weight:100;
+		line-height:34px;
+		padding:0;
+		width:70px;
+	}
+	.abixed {
+		position:fixed;
+		top:60px;
+		right:20px;
+		z-index:999;
+		cursor:pointer
+	}
+	.abixed p {
+		font-size:14px;
+		background:#4755b9;
+		color:#fff;
+		box-shadow:0 0 15px rgba(28,31,135,.5);
+		padding:18px 15px;
+		border-radius:50%;
+	}
+	.abixed p i {
+		display:inline-block;
+		width:30px;
+		height:30px;
+		margin-bottom:5px;
+	}
+	/* 濠电儑缍�椤曆勬叏閻愬搫鍗抽柟绋块鎼达拷 */
+			.replace .col-xs-6 {
+		padding:0;
+		margin-top:15px
+	}
+	/*  .replace input {
+		display:none
+	}
+	.replace label {
+		color:#333;
+		padding:0 10px;
+		margin:0;
+		line-height:40px !important;
+		font-size:16px;
+		font-weight:400;
+		width:100%;
+		cursor:pointer;
+	}
+	.replace input:checked + label {
+		color:#1c1f87;
+		background:#fff;
+		font-weight:bold;
+		border-bottom:1px solid #1c1f87;
+		display:inline;
+	}
+	.replace input:disabled + label {
+		opacity:0.7;
+	}
+	*/
+	.radio_box {
+		display:inline-block;
+		position:relative;
+		font-size:16px;
+	}
+	.radio_box label {
+		cursor:pointer;
+		width:100%;
+	}
+	.radio_box label i {
+		font-size:20px;
+		font-style:normal;
+		display:inline-block;
+		width:17px;
+		height:17px;
+		text-align:center;
+		line-height:13px;
+		color:#fff;
+		vertical-align:middle;
+		margin:-2px 6px 1px 15px;
+		border:#1c1f87 1px solid;
+	}
+	.radio_box input[type="checkbox"],input[type="radio"] {
+		display:none;
+	}
+	.radio_box input[type="radio"] + i {
+		border-radius:50%;
+	}
+	.radio_box input[type="checkbox"]:checked + i,input[type="radio"]:checked + i {
+		background:#1c1f87;
+	}
+	.radio_box input[type="checkbox"]:disabled + i,input[type="radio"]:disabled + i {
+		border-color:#ccc;
+	}
+	.radio_box input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled + i {
+		background:#ccc;
+	}
+	/* 闂佸憡顨嗗ú鏍囬弻銉︾劵濠㈣泛顑囨竟澶岋拷娈垮枛缁绘帞娆㈤妸鈺佺闁跨噦鎷� */
+	.radios label {
+		font-size:15px;
+		cursor:pointer;
+		font-weight:100;
+	}
+	.radios label i {
+		font-size:14px;
+		font-style:normal;
+		display:inline-block;
+		width:15px;
+		height:15px;
+		text-align:center;
+		line-height:15px;
+		color:#fff;
+		vertical-align:middle;
+		margin:-2px 5px 1px 5px;
+		border:#1c1f87 1px solid;
+	}
+	.radios input[type="checkbox"],.radios input[type="radio"] {
+		display:none;
+	}
+	.radios input[type="radio"] + i {
+		border-radius:7px;
+	}
+	.radios input[type="checkbox"]:checked + i,.radios input[type="radio"]:checked + i {
+		background:#1c1f87;
+	}
+	.radios input[type="checkbox"]:disabled + i,.radios input[type="radio"]:disabled + i {
+		border-color:#ccc;
+	}
+	.radios input[type="checkbox"]:checked:disabled + i,.radios input[type="radio"]:checked:disabled + i {
+		background:#ccc;
+	}
+	/*婵☆垪鍓濆锟�*/
+	#stencilTab li.active {
+		background:#fff;
+		border:1px solid #1c1f87;
+		border-bottom:none
+	}
+	#stencilTab li.active a {
+		color:#1c1f87;
+	}
+	#stencilTab {
+		background:#1c1f87;
+		color:#fff;
+		line-height:38px;
+		text-align:center;
+		height:38px;
+	}
+	#stencilTab li a {
+		color:#fff;
+		font-size:16px;
+		display:inline-block;
+		width:100%;
+		height:100%;
+	}
+	/* 闂佽鍣紞锟介柨鐔绘閹冲秵绌辨繝鍥х畳闁跨噦鎷� */
+		.basis .fa {
+		position:relative;
+		left:8px;
+		top:0px;
+		cursor:pointer;
+		color:#1c1f87
+	}
+	.basis ul li {
+		height:auto;
+		line-height:25px;
+		height:auto;
+	}
+	.basis ul li label {
+		font-weight:100;
+		width:70px;
+		padding:0;
+		line-height:34px;
+	}
+	.basis ul li .col-xs-9 {
+		border:none;
+		padding:0
+	}
+	.purpose {
+		width:100%;
+		display:table;
+		border-collapse:separate;
+		border-spacing:15px 0px;
+		margin-bottom:15px;
+	}
+	.purposedant {
+		display:table-row;
+	}
+	.purposebox {
+		display:table-cell;
+		margin:15px;
+		border:1px solid #ccc;
+		border-radius:5px;
+		padding:10px 15px;
+		width:33.33%
+	}
+	.purposebox .purposetitle {
+		border-bottom:1px solid #ccc;
+	}
+	.purposebox .purposetitle p {
+		font-size:16px;
+		letter-spacing:1px;
+		padding-bottom:5px;
+		color:#1c1f87
+	}
+	.purposebox .purposetitle p i {
+		position:relative;
+		display:inline-block;
+		margin-right:5px;
+	}
+	.purposetext p {
+		font-size:14px;
+		line-height:1.75em;
+		max-height:100px;
+		overflow-y:auto;
+		margin-top:10px !important;
+	}
+	.inspect h4 {
+		font-weight:600;
+		color:#1c1f87;
+		letter-spacing:1px;
+		line-height:2em;
+		font-size:16px;
+	}
+	.buttonend {
+		padding-bottom:15px;
+	}
+	/* 涓汉淇℃伅 */
+	#Tabbutton .tab-pane{
+		position:relative;
+	}
+	#Tabbutton .choice{
+		position:absolute;
+		top: -30px;
+		right:15px;
+	}
+	.designa p {
+		line-height:34px;
+		padding-right:25px;
+		margin-top:10px;
+		font-size:15px;
+	}
+	.designa p span {
+		display:inline-block;
+		color:#1c1f87;
+		font-weight:bold
+	}
+	#form_data .col-sm-2 {
+		font-weight:100;
+		padding:0;
+		line-height:34px;
+		text-align:right;
+	}
+	#form_data .col-sm-9 {
+		padding-left:0
+	}
+	/* 闂佺娴氶崜娆撳箟閳ユ剚鍤曢柛锔诲幘瀹曪拷  */	
+	/*闂佽绻戞刊鑺ョ珶婵犲洦鍤勯悘鐐靛亾閻濐垶鏌ら惂鍛婂*/
+		/* .window {
+		position:absolute;
+		top:0;
+		z-index:99999;
+		background:rgba(0,0,0,.4);
+		width:100%;
+		height:100%;
+	}
+	*/
+		/*闂備焦褰冮惌鍌氼焽閺夋娴栭柛鈩冾焽娴犳悂骞栫�涙ɑ绀夊鐧告嫹*/
+	.affiche,.cement {
+		background:#fff url(../img/affiche-bg.png);
+		height:auto;
+		border-radius:15px;
+		margin:0 auto;
+		position:relative;
+	}
+	/*闂佸憡鐟ラ崢鏍箔閸屾粍鍠嗛柟鐑樺灥瑜扮娀姊婚崒锔藉*/
+		.affiche em {
+		display:inline-block;
+		background:url(../img/affiche.png) no-repeat right;
+		position:absolute;
+		width:35px;
+		height:50px;
+		top:-50px;
+		right:20px;
+		cursor:pointer;
+	}
+	/*濠碘剝顨呭Λ娆撴倶閿旂偓瀚氶柨鏂垮⒔閻酣鎮楃涵鍛棄閻庤濞婇弫宥囦沪閻ｅ本鎲绘繛杈剧稻閹告悂濡甸崶鈺�鐒婇煫鍥ㄦ⒒婢瑰锟芥鍣幏锟�*/
+		.affiche {
+		width:570px;
+		height:auto;
+		padding:20px;
+		position:absolute;
+		/* top:20%;
+		*/ transform:translateY(-20%);
+		left:50%;
+		transform:translateX(-50%);
+	}
+	.cement {
+		border:1px solid #7275d2;
+		padding:30px 30px;
+	}
+	.cement h4 {
+		font-size:24px;
+		color:#1c1f88;
+		letter-spacing:5px;
+	}
+	.cementTxt p,.cementTxt span,.cementTxt {
+		font-size:14px;
+	}
+	.cementTxt ol {
+		padding-left:30px;
+		max-height:400px;
+		overflow-y:auto
+	}
+	.cementTxt ol li {
+		list-style:decimal;
+		margin-top:8px;
+		font-size:14px.cementTxt;
+		line-height:1.75em;
+	}
+	.cementTxt {
+		max-height:300px;
+		overflow-y:auto;
+		margin-top:15px;
+	}
+	.cementText {
+		margin-top:15px;
+	}
+	.cementText p {
+		font-size:14px;
+		padding-right:10px;
+		line-height:1.75em;
+	}
+	/*闂佸湱顭堥ˇ鐢稿箰閿燂拷*/
+		.cementbutton button {
+		width:100%;
+		font-size:14px;
+		margin-top:18px;
+	}
+	/*闂備礁鎼粔鐢稿垂閻㈠憡鍤嬪ù鍏兼綑濡﹢鏌涢妷顖炴妞ゆ劧鎷�*/
+	.order .panel-group .panel-heading+.panel-collapse>.panel-body:first-child {
+		border:none;
+		padding:0;
+	}
+	.tree {
+		color:#fff;
+		max-height:300px;
+		overflow-y:auto;
+	}
+	.tree li {
+		list-style-type:none;
+		margin:0;
+		padding:5px 15px 0;
+		position:relative
+	}
+	.tree li ul li {
+		padding:5px 0 0 20px;
+		display:none;
+	}
+	.tree li ul li p span {
+		margin:0 5px;
+		display:inline-block;
+	}
+	.tree li::before,.tree li::after {
+		content:'';
+		left:-20px;
+		position:absolute;
+		right:auto
+	}
+	.tree>ul>li i {
+		margin:0 5px;
+	}
+	.tree li p {
+		-moz-border-radius:5px;
+		-webkit-border-radius:5px;
+		display:inline-block;
+		padding:3px 8px;
+		width:100%;
+	}
+	.tree li p a {
+		color:#fff;
+	}
+	.tree li p textarea {
+		color:#000 !important;
+		border-radius:5px;
+		padding:5px;
+	}
+	.fa-pencil-square-o {
+		position:relative;
+		top:2px;
+	}
+	.tree li.parent_li>p {
+		cursor:pointer;
+	}
+	.tree li.parent_li>p span {
+		font-weight:700;
+		padding-left:15px;
+	}
+	.tree>ul>li::before,.tree>ul>li::after {
+		border:0
+	}
+	.tree li:last-child::before {
+		height:30px
+	}
+	/*闂備焦鎮堕崕鎶藉磻閹剧粯鍋夐柨婵嗩槸閸愶拷闂佹悶鍎崝宥夊汲閿燂拷*/
+	.stock {
+		margin-top:10px;
+		max-height:340px;
+		overflow-y:auto;
+	}
+	.stock .table>thead:first-child>tr:first-child>th,.stock .table>tbody>tr>td {
+		color:#fff;
+		text-align:center;
+		border:none;
+		border-bottom:1px solid rgba(255,255,255,.5);
+		line-height:24px;
+	}
+	.stock .table>tbody>tr>td span {
+		font-size:18px;
+		margin:0 5px;
+		display:inline-block;
+		cursor:pointer;
+	}
+	.stocktxt {
+		color:#fff;
+		line-height:1.75em
+	}
+	/*闂備焦鐪归崐鏇熸櫠閽樺娼栭柛鎾楀嫬鐝版繝鐢靛Т閸燁垶鎮為懞銉﹀弿闁圭儤鍨甸敓鍊燁嚙椤斿繘鏁撻敓锟�*/
+	.bility p {
+		padding:15px 0;
+	}
+	.expert {
+		padding:15px;
+	}
+	.experttxt p {
+		color:#fff;
+		padding:15px 0;
+	}
+	/*闁荤喐绮嶅妯虹暦椤掑嫬纾挎慨妯挎硾缁狀噣鏌曟径鍫濆姕闁哥噦鎷�*/
+	.imgrepot {
+		padding:15px;
+	}
+	.imgrepotxt {
+		color:#fff;
+		font-size:14px;
+		line-height:1.75em;
+		margin-bottom:35px;
+	}
+	.imgrepotxt h4 {
+		font-weight:700;
+		font-size:15px;
+	}
+	.imgrepotxt ol li {
+		list-style:decimal !important;
+	}
+	.imgrepotxt ol {
+		padding-left:15px;
+	}
+	.reset ul li {
+		background:url(../img/reset.png) no-repeat center;
+		width:60px;
+		height:60px;
+		display:inline-block;
+	}
+	.reset ul li a {
+		display:inline-block;
+		width:100%;
+		height:100%;
+	}
+	.reset ul li.reset1 {
+		background-position:0 0;
+	}
+	.reset ul li.reset2 {
+		background-position:-60px 0
+	}
+	.reset ul li.reset3 {
+		background-position:-120px 0
+	}
+	.reset ul li.reset4 {
+		background-position:-180px 0
+	}
+	.reset ul li.reset5 {
+		background-position:-240px 0
+	}
+	.reset ul li.reset6 {
+		background-position:-300px 0
+	}
+	.reset ul li.reset7 {
+		background-position:-360px 0
+	}
+	.reset ul li.reset8 {
+		background-position:-420px 0
+	}
+	.reset ul li.reset9 {
+		background-position:-480px 0
+	}
+	.reset ul li.reset10 {
+		background-position:-540px 0
+	}
+	.reset ul li.reset11 {
+		background-position:-600px 0
+	}
+	.reset ul li.reset12 {
+		background-position:-660px 0
+	}
+	.reset ul li.reset13 {
+		background-position:-720px 0
+	}
+	.reset ul li.reset14 {
+		background-position:-780px 0
+	}
+	.reset ul li.reset15 {
+		background-position:-840px 0
+	}
+	.reset ul li.reset16 {
+		background-position:-900px 0
+	}
+	.reset ul li.reset17 {
+		background-position:-960px 0
+	}
+	.reset ul li.reset18 {
+		background-position:-1020px 0
+	}
+	.reset ul li.reset19 {
+		background-position:-1080px 0
+	}
+	.reset ul li .tooltip {
+		margin-left:-15px;
+		line-height:50px;
+	}
+	.reset ul li .tooltip-inner {
+		font-size:16px;
+	}
+/* 浜哄憳瀹℃牳鏌ョ湅璇︽儏  */
+	#groupDetail .form-group span{
+		line-height:34px;
+	}
+	#groupDetail .form-group .col-sm-8 img{
+		height:130px;
+		width:auto;
+		border:1px solid rgba(28,31,125,0.5);
+		border-radius:10px;
+	}
+	#groupDetail .form-group,#groupDetail .form-group .col-sm-8{
+		position:relative;
+	}
+	#groupDetail .form-group i{
+		position: absolute;
+		top:0;
+		right:15px;
+		line-height:34px;
+		font-size:20px;
+		color:#1c1f87;
+	}
+	#groupDetail .tooltip-inner{
+		width:200px;
+		text-align:left;
+		font-size:14px;
+	}
+/* 浼氳瘖绠＄悊/浼氳瘖鎶ュ憡 */
+	.warite{
+		border-top:15px solid #f5f5f5;
+		margin:15px 0 0;
+	}	
+	.warite .choice{
+		position:relative;
+		text-align:right;
+		padding:15px 0
+	}
+	.modal .modal-body .question{
+		font-size:60px;
+		line-height:60px;
+		color:#192c8f;
+		margin:30px 0 5px;
+	}
+/* 鍋ュ悍妗ｆ/涓婁紶鏂囦欢 */
+	.uploadPoss{
+		background:rgba(0,0,0,.4);
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		z-index:9999
+	}
+	.upload{
+		width:300px;
+		margin:25% auto
+	}	
+	.upload p{
+		color:#fff
+	}
+	.upload .progress{
+		margin-bottom:15px;
+	}
+	.upload .progress-bar-info{
+		background-color:rgba(51,54,177,.75);
+	}
+	.uploadModal{
+		position:absolute;
+		top:20%;
+		width:100%;
+	}
+	.uploadModal .modal-dialog{
+		width:380px;
+	}
+	.uploadModal .modal-dialog h4{
+		font-size:17px;
+	}
+	.uploadModal .modal-body p{
+		line-height:34px;
+		padding:15px 0;
+	}
+	.uploadModal .modal-body p span{
+		display:inli9ne-block;
+		color:#1c1f87;
+		padding:0 5px;
+		font-weight:700;
+	}
+	.alertHint .alert {
+		display: none;
+	}
